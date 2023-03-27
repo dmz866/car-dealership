@@ -34,10 +34,10 @@ export class CarsService {
 		return this.cars.push(car);
 	}
 
-	updateCar(carDTO: UpdateCarDTO) {
+	updateCar(id: string, carDTO: UpdateCarDTO) {
 		this.cars?.map(c => {
-			if (c.id == carDTO.id) {
-				c = { ...carDTO };
+			if (c.id == id) {
+				c = { id: c.id, ...carDTO };
 				return;
 			}
 		});

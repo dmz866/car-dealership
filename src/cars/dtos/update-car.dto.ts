@@ -1,10 +1,11 @@
-import { IsString } from "class-validator";
+import { IsOptional, IsString } from "class-validator";
 
 export class UpdateCarDTO {
 	@IsString()
-	readonly id: string;
-	@IsString()
+	@IsOptional()
 	readonly model: string;
+
 	@IsString()
+	@IsOptional()
 	readonly brand: string;
 }

@@ -31,7 +31,7 @@ export class CarsController {
 	}
 
 	@Put(':id')
-	updateCar(@Body() car: UpdateCarDTO) {
-		return this.carsService.updateCar(car);
+	updateCar(@Param('id', ParseUUIDPipe) id, @Body() car: UpdateCarDTO) {
+		return this.carsService.updateCar(id, car);
 	}
 }
