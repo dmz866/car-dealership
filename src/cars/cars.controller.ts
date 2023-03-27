@@ -1,6 +1,8 @@
 import { Controller, Get, NotFoundException, Param, ParseUUIDPipe } from '@nestjs/common';
-import { Post, Put } from '@nestjs/common/decorators';
+import { Body, Post, Put } from '@nestjs/common/decorators';
 import { CarsService } from './cars.service';
+import { CreateCarDTO } from './dtos/create-car.dto';
+import { UpdateCarDTO } from './dtos/update-car.dto';
 
 @Controller('cars')
 export class CarsController {
@@ -23,16 +25,13 @@ export class CarsController {
 	}
 
 	@Post()
-	createCar() {
-		return {
-			ok: true
-		};
+	//@UsePipes(ValidationPipe)
+	createCar(@Body() car: CreateCarDTO) {
+		return this.carsService.createCar(car);
 	}
 
 	@Put(':id')
-	updateCar() {
-		return {
-			ok: true
-		};
+	updateCar(@Body() car: UpdateCarDTO) {
+		return this.carsService.updateCar(car);
 	}
 }
