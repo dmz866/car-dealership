@@ -44,4 +44,8 @@ export class CarsService {
 
 		return carDTO;
 	}
+
+	deleteCar(id: string) {
+		this.cars = this.cars?.filter(c => c.id != id);
+	}
 }

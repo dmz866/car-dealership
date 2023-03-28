@@ -1,5 +1,5 @@
 import { Controller, Get, NotFoundException, Param, ParseUUIDPipe } from '@nestjs/common';
-import { Body, Post, Put } from '@nestjs/common/decorators';
+import { Body, Delete, Post, Put } from '@nestjs/common/decorators';
 import { CarsService } from './cars.service';
 import { CreateCarDTO } from './dtos/create-car.dto';
 import { UpdateCarDTO } from './dtos/update-car.dto';
@@ -33,5 +33,10 @@ export class CarsController {
 	@Put(':id')
 	updateCar(@Param('id', ParseUUIDPipe) id, @Body() car: UpdateCarDTO) {
 		return this.carsService.updateCar(id, car);
+	}
+
+	@Delete(':id')
+	deleteCar(@Param('id', ParseUUIDPipe) id: string) {
+		this.carsService.deleteCar(id);
 	}
 }
